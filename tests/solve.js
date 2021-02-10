@@ -17,7 +17,13 @@ QUnit.module('Тестируем функцию solve', function () {
 		assert.strictEqual(solve('5 + 384 * 10', 3), 3845);
 		assert.strictEqual(solve('5 + 384 * 10', 5), 3845);
 	});
-	QUnit.test('частный случай', function (assert) {
-		assert.strictEqual(solve('', 3), "invalid expression");
+	QUnit.test('частный случай выражения', function (assert) {
+		assert.strictEqual(solve('', 3), 'invalid expression');
+	});
+	QUnit.test('невалидные входные данные (типы)', function (assert) {
+		assert.strictEqual(solve(5, 3), 'invalid input');
+		assert.strictEqual(solve(5, '3'), 'invalid input');
+		assert.strictEqual(solve('5', '3'), 'invalid input');
+		assert.strictEqual(solve('5', [2, 4]), 'invalid input');
 	});
 });
